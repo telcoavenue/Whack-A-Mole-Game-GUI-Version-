@@ -7,6 +7,8 @@ Whack A Mole PC Game ::: Crerated by Constantinos < tinoC23 /> Constantinou @ 06
 
 // class import
 
+import javax.swing.ScrollPaneConstants;
+
 import java.awt.AWTException;
 
 import java.awt.Image;
@@ -93,6 +95,8 @@ import java.lang.NullPointerException;
 import java.lang.NumberFormatException;
 import java.lang.ArithmeticException;
 import java.lang.RuntimeException;
+
+import javax.swing.JScrollPane;
 
 import java.io.IOException;
 
@@ -401,7 +405,7 @@ public class WhackAMoleGUIGame extends JFrame // throws IndexOutOfBoundsExceptio
 		for(int i1=0;i1<buttonsARRAY.length;i1++)
 		{
 			
-			JAVAbuttonsARRAY[i][i1]=new JLabel(buttonsARRAY[i][i1]);
+			JAVAbuttonsARRAY[i][i1]=new JLabel(/*buttonsARRAY[i][i1]*/);
 			
 		}	
 			
@@ -829,7 +833,7 @@ public class WhackAMoleGUIGame extends JFrame // throws IndexOutOfBoundsExceptio
 		JAVAbuttonsARRAY[i][i1].setBackground(Color.WHITE);		
 			JAVAbuttonsARRAY[i][i1].setEnabled(true);
 		//	JAVAbuttonsARRAY[i][i1].setText("?");
-			JAVAbuttonsARRAY[i][i1].setSize(16,16);
+		//	JAVAbuttonsARRAY[i][i1].setSize(8,8);
 			JAVAbuttonsARRAY[i][i1].setIcon(icon);
 			JAVAbuttonsARRAY[i][i1].setBorder(BorderFactory.createLineBorder(Color.black));
 		JAVAbuttonsARRAY[i][i1].addMouseListener(new MouseAdapter() 
@@ -1028,6 +1032,39 @@ public void mouseExited(MouseEvent e)
 		}	
 			
 	}
+	
+	//
+	
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		
+double width = screenSize.getWidth();
+double height = screenSize.getHeight();
+
+		int w=(int)width;
+			int h=(int)height;
+	
+	//
+	
+		JPanel JButtonsContainer2 = new JPanel();
+	JButtonsContainer2.setLayout(new FlowLayout(FlowLayout.CENTER));
+		JButtonsContainer2.setBackground(Color.WHITE);
+		// JButtonsContainer2.setSize(new Dimension(100, 150));
+		  JButtonsContainer2.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+		  JButtonsContainer2.setCursor(Cursor.getDefaultCursor());
+	
+	//
+	
+ JScrollPane scrollPane = new JScrollPane(JButtonsContainer,   ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+ scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+   		 scrollPane.setPreferredSize(new Dimension(w-50, h-200));
+		scrollPane.setBounds(5, 5, w-50, h-100);
+                scrollPane.setBorder(BorderFactory.createTitledBorder("Whack-A-Mole-Game"));
+		scrollPane.setViewportView(JButtonsContainer);	
+	
+       //
+	
+	    JButtonsContainer2.add(scrollPane); // add acrollpane to frame
 		
 		//
 		// additional code goes here .... [jpanels] 
@@ -1040,13 +1077,15 @@ public void mouseExited(MouseEvent e)
 		JPanelsContainer.add(navigationMENU);
 		JPanelsContainer.add(GeneralScore);
 		   JPanelsContainer.add(GameScore);
-		   JPanelsContainer.add(JButtonsContainer);
+		   JPanelsContainer.add(JButtonsContainer2);
+	
 	
 	JPanelsContainer.revalidate();
 		
 		//
 		
 		frame.add(JPanelsContainer);
+
 		
 		frame.setDefaultLookAndFeelDecorated(true);
 		
@@ -1058,15 +1097,9 @@ public void mouseExited(MouseEvent e)
 		
 		frame.setLocationRelativeTo(null);
 		
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	
 		
-double width = screenSize.getWidth();
-double height = screenSize.getHeight();
-
-		int w=(int)width;
-			int h=(int)height;
-		
-		 frame.setSize(w,h);
+		 frame.setSize(w-50,h-100);
 		
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		
