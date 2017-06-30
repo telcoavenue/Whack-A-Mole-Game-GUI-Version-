@@ -11,7 +11,7 @@ import java.awt.AWTException;
 
 import java.awt.Image;
 
-import java.awt.Toolkit;
+import java.awt.Toolkit; 
 
 import java.util.Random;
 
@@ -38,7 +38,7 @@ import java.awt.event.*;
 
 import java.awt.event.MouseMotionListener;
 
-
+import java.awt.Point;
 
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -104,6 +104,8 @@ import javax.swing.border.*;
 
 import javax.swing.JWindow;
 
+import java.awt.Cursor;
+
 // class import
 
 /**
@@ -133,8 +135,12 @@ import javax.swing.JWindow;
  
 */
 
-public class WhackAMoleGUIGame extends JFrame 
+public class WhackAMoleGUIGame extends JFrame // throws IndexOutOfBoundsException, HeadlessException
 {
+	
+	//
+	
+	Toolkit toolkit = Toolkit.getDefaultToolkit();
 	
 	//
 	
@@ -410,6 +416,12 @@ public class WhackAMoleGUIGame extends JFrame
 	{
 		
 		//
+		
+	Image image = toolkit.getImage("mole_hill.png");
+	
+	ImageIcon icon = new ImageIcon(image); 
+		
+		//
 	  
 		for(int i=0;i<buttonsARRAY.length;i++)
 		{
@@ -419,7 +431,8 @@ public class WhackAMoleGUIGame extends JFrame
 			
 			JAVAbuttonsARRAY[i][i1].setEnabled(true);
 			
-			JAVAbuttonsARRAY[i][i1].setText("?");
+
+		JAVAbuttonsARRAY[i][i1].setIcon(icon);
 			
 		}	
 			
@@ -509,31 +522,46 @@ public class WhackAMoleGUIGame extends JFrame
 		
 		//
 		
+		
+	
+
+
+		
+		
+		//
+		
 		navigationMENU.setLayout(new FlowLayout(FlowLayout.LEFT));
 		navigationMENU.setBackground(Color.ORANGE);
-		navigationMENU.setSize(new Dimension(100, 150));
+		// navigationMENU.setSize(new Dimension(200, 300));
 		  navigationMENU.setBorder(BorderFactory.createLineBorder(Color.CYAN));
+		  navigationMENU.setCursor(Cursor.getDefaultCursor());
 		
 		//
 		
 		GeneralScore.setLayout(new FlowLayout(FlowLayout.CENTER));
 		GeneralScore.setBackground(Color.ORANGE);
-		GeneralScore.setSize(new Dimension(100, 150));
+		// GeneralScore.setSize(new Dimension(100, 150));
 		  GeneralScore.setBorder(BorderFactory.createLineBorder(Color.CYAN));
+		  GeneralScore.setCursor(Cursor.getDefaultCursor());
 		  
 		  //
 		   
 		GameScore.setLayout(new FlowLayout(FlowLayout.CENTER));
 		GameScore.setBackground(Color.WHITE);
-		GameScore.setSize(new Dimension(100, 150));
+		// GameScore.setSize(new Dimension(100, 150));
 		  GameScore.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+		  GameScore.setCursor(Cursor.getDefaultCursor());
 		  
 		  //
 		
 		JButtonsContainer.setLayout(new GridLayout(10,10,5,5));
 		JButtonsContainer.setBackground(Color.CYAN);
-		JButtonsContainer.setSize(new Dimension(550, 550));
+		// JButtonsContainer.setSize(new Dimension(550, 550));
 		  JButtonsContainer.setBorder(BorderFactory.createLineBorder(Color.RED));
+		  	Image image22 = toolkit.getImage("wood_hammer.png");
+       Cursor c = toolkit.createCustomCursor(image22 , new Point(JButtonsContainer.getX(), JButtonsContainer.getY()), "img");
+		  JButtonsContainer.setCursor(c);
+		  
 		  
 		  //
 		  
@@ -563,6 +591,8 @@ public class WhackAMoleGUIGame extends JFrame
 			
 		 KBMenuBar.add(MENU);
 		 KBMenuBar.add(ABOUT);
+		 
+		 /*
 				
 				 //
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -607,10 +637,14 @@ public class WhackAMoleGUIGame extends JFrame
       );
        MENU.add(new JSeparator());//add a seperator line
 	 MENU.add(StartGame);
+	 
+	 */
 				
 				 //
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 				//
+				
+				/*
 				
 	ResetGame=new JLabel("reset the current game");
 	  ResetGame.setBackground(Color.WHITE);
@@ -657,6 +691,8 @@ public class WhackAMoleGUIGame extends JFrame
 				 //
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 				//
+				
+				*/
 				
 	EXIT=new JLabel("exit game");
 	  EXIT.setBackground(Color.WHITE);
@@ -778,6 +814,12 @@ public class WhackAMoleGUIGame extends JFrame
 	
 	//
 	
+	Image image11 = toolkit.getImage("mole_hill.png");
+	
+	ImageIcon icon = new ImageIcon(image11); 
+	
+	//
+	
 	for(int i=0;i<buttonsARRAY.length;i++)
 	{
 			
@@ -786,19 +828,76 @@ public class WhackAMoleGUIGame extends JFrame
 				
 		JAVAbuttonsARRAY[i][i1].setBackground(Color.WHITE);		
 			JAVAbuttonsARRAY[i][i1].setEnabled(true);
-			JAVAbuttonsARRAY[i][i1].setText("?");
-			JAVAbuttonsARRAY[i][i1].setSize(100,80);
+		//	JAVAbuttonsARRAY[i][i1].setText("?");
+			JAVAbuttonsARRAY[i][i1].setSize(16,16);
+			JAVAbuttonsARRAY[i][i1].setIcon(icon);
 			JAVAbuttonsARRAY[i][i1].setBorder(BorderFactory.createLineBorder(Color.black));
 		JAVAbuttonsARRAY[i][i1].addMouseListener(new MouseAdapter() 
 		{ 
+			
+			//
+			
+					//		 
+
+public void mouseEntered(MouseEvent e) 
+       { 
+			
+			/*	
+		
+             		Image image242 = toolkit.getImage("wood_hammer.png");
+       Cursor ccc3 = toolkit.createCustomCursor(image242 , new Point(JButtonsContainer.getX(), JButtonsContainer.getY()), "img");
+		  JButtonsContainer.setCursor(ccc3);       
+				
+	       */
+				
+	}
+				
+	//			
+				
+public void mouseExited(MouseEvent e) 
+	{ 
+		
+		
+		/*
+		
+			Image image232 = toolkit.getImage("wood_hammer.png");
+       Cursor ccc33 = toolkit.createCustomCursor(image232 , new Point(JButtonsContainer.getX(), JButtonsContainer.getY()), "img");
+		  JButtonsContainer.setCursor(ccc33);
+		
+		
+		*/
+		
+	}
+
+//
 			
 			//
 				
           public void mousePressed(MouseEvent me) 
 		{ 
 				
-				// get jbutton name .... 
-				
+				// 
+			
+			int control=0;
+			
+		Image image = toolkit.getImage("mole_uncovered.png");
+	
+	ImageIcon iconUNCOVERED = new ImageIcon(image); 
+			
+			Image image2 = toolkit.getImage("mole_hill_false.png");
+	
+	ImageIcon iconFALSE = new ImageIcon(image2); 
+			
+			
+			//
+			/*
+			
+			Image image222 = toolkit.getImage("wood_hammer.gif");
+       Cursor cc = toolkit.createCustomCursor(image222 , new Point(JButtonsContainer.getX(), JButtonsContainer.getY()), "img");
+		  JButtonsContainer.setCursor(cc);
+			
+			*/
+				//
 				
 		for(int i=0;i<buttonsARRAY.length;i++)
 		{
@@ -809,17 +908,26 @@ public class WhackAMoleGUIGame extends JFrame
 		if (me.getSource() == JAVAbuttonsARRAY[i][i1]) 
 		{
 			
+		if( JAVAbuttonsARRAY[i][i1].isEnabled() == false )	
+		{
 			
+			control++;
 			
-			
+		}
+		else{
+		
 			if(moleGrid[i][i1] == 'M')
 			{
 				
 		  molesINT--;
 				
-			JAVAbuttonsARRAY[i][i1].setText("M");
+		//	JAVAbuttonsARRAY[i][i1].setText("M");
+				
+			
 				
 			JAVAbuttonsARRAY[i][i1].setEnabled(false);
+				
+					JAVAbuttonsARRAY[i][i1].setIcon(iconUNCOVERED);
 								
 			molesNumber.setText(" || Moles Remain : "+Integer.toString(molesINT)+" ");
 				
@@ -827,19 +935,26 @@ public class WhackAMoleGUIGame extends JFrame
 			else
 			{
 				
-				JAVAbuttonsARRAY[i][i1].setText("---");	
+			//	JAVAbuttonsARRAY[i][i1].setText("---");	
+				
+				
 				
 				JAVAbuttonsARRAY[i][i1].setEnabled(false);
+				
+				
+					JAVAbuttonsARRAY[i][i1].setIcon(iconFALSE);
+				
 				
 			}
 			
 			i=1000;
 			i1=1000;
 			
-                }
+                }}
 			
 		}
 
+		if(control == 0){
 		if( ( i == (buttonsARRAY.length-1) ) || ( i==1000 ) )
 		{
 			
@@ -847,9 +962,13 @@ public class WhackAMoleGUIGame extends JFrame
 			
 		turnsRemained.setText(" || Turns Left : "+Integer.toString(TURNS)+" ");	
 			
-		}		
+		}}		
 			
 		}
+		
+		//
+		
+		control=0;
 		
 		// match the jbutton name with the jbutton names array appropriate coordinates [x][y] ....
 		// match the x-y coordinates of the array with the moles carrier array coordinates ...
@@ -888,6 +1007,15 @@ public class WhackAMoleGUIGame extends JFrame
 			//		
 			
 		}
+		
+		
+		//
+		
+		
+	
+		
+		
+		//
 	       
 		
 		}
@@ -926,17 +1054,35 @@ public class WhackAMoleGUIGame extends JFrame
 		
 		frame.setVisible(true);
 		
-		frame.setResizable(false);
+		frame.setResizable(true);
 		
 		frame.setLocationRelativeTo(null);
 		
-		frame.setSize(800,600);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		
+double width = screenSize.getWidth();
+double height = screenSize.getHeight();
+
+		int w=(int)width;
+			int h=(int)height;
+		
+		 frame.setSize(w,h);
+		
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		
+                 //  frame.setUndecorated(true);
 		
 		frame.revalidate();
 		
 	        frame.pack();
 		
-                      //
+                
+
+                   //
+		   
+		   
+		
+		      
 	}
 	
 	//
